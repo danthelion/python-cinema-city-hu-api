@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+import os
 import pyccapi.pyccapi_cinema as pyccc
 # import pyccapi.pyccapi_movie as pyccm
 
@@ -8,6 +8,7 @@ import pprint as pp
 
 def main():
     """Main business logic."""
+    # os.system('chcp 65001') # Change console character encoding
     cinema = pyccc.Cinema('WestEnd')
 
     weekly_schedule = cinema.schedule_week
