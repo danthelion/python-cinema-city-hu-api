@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pyccapi.pyccapi_cinema as pyccc
 # import pyccapi.pyccapi_movie as pyccm
 
@@ -14,7 +15,8 @@ def main():
 
     # pp.pprint(today_schedule)
     # pp.pprint(weekly_schedule)
-    pp.pprint(cinema.get_schedule_day('2016/09/01'))
+    # pp.pprint(cinema.get_schedule_day('2016/09/07'))
+    pp.pprint(cinema.get_schedule_day())
     # pp.pprint(today_schedule['Szemfényvesztők 2 (12)'])
     # print(cinema.get_schedule_day('2016/09/01')['Szemfényvesztők 2 (12)'])
 

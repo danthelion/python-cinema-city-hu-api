@@ -14,7 +14,7 @@ class Cinema:
         self.id = pymc.CINEMA_CODES[cinema_name]
         self.base_data = self.get_base_data(self.id)
         self.schedule_week = self.get_schedule_week(self.base_data)
-        self.schedule_today = self.get_schedule_today(self.base_data)
+        self.schedule_today = self.get_schedule_day(self.base_data)
 
     def get_base_data(self, c_id):
         """Get weekly movie data in JSON."""
@@ -47,20 +47,7 @@ class Cinema:
             weekly_schedule[movie_title] = daily_showings
         return weekly_schedule
 
-    def get_schedule_today(self, base_data):
-        """Get daily movie data in JSON."""
-        today_schedule = {}
-        for ix, movie in enumerate(base_data['sites'][0]['fe']):
-            movie_title = movie['fn']
-            showing_times = []
-            for showing in base_data['sites'][0]['fe'][ix]['pr']:
-                row_date = showing['dt'].split(' ')[0]
-                if row_date == time.strftime('%Y/%m/%d'):
-                    showing_times.append(showing['tm'])
-            today_schedule[movie_title] = sorted(showing_times)
-        return json.loads(json.dumps(today_schedule, ensure_ascii=False))
-
-    def get_schedule_day(self, date):
+    def get_schedule_day(self, date=time.strftime('%Y/%m/%d')):
         """Get daily movie data in JSON."""
         weekly_schedule = self.base_data
         day_schedule = {}
@@ -71,5 +58,5 @@ class Cinema:
                 row_date = showing['dt'].split(' ')[0]
                 if row_date == date:
                     showing_times.append(showing['tm'])
-            day_schedule[movie_title] = sorted(showing_times)
+            day_schedule[movie_title] = sorted(showing_times) or None
         return json.loads(json.dumps(day_schedule, ensure_ascii=False))
