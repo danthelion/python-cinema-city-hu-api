@@ -23,7 +23,7 @@ def main():
     pp.pprint(today_schedule)
 
     # Print weekly schedule
-    # pp.pprint(weekly_schedule)
+    # pp.pprint(weekly_schedule){}
 
     # Print daily schedule for any date (from today to one week from today interval, default: today)
     # pp.pprint(cinema.get_schedule_day('2016/09/07'))
